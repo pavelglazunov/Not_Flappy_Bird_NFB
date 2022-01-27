@@ -1,6 +1,8 @@
 import pygame as pg
 import sys
 
+print(5555555555555555)
+
 
 def print_text(text, x, y, font_size, color, screen):
     font = pg.font.SysFont("", font_size, True, False)
