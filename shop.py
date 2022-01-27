@@ -1,11 +1,9 @@
 import pygame as pg
 import sys
 
-print(5555555555555555555)
 
-
-def print_text(text, x, y, font_size, color, screen):
-    font = pg.font.SysFont("", font_size, True, False)
+def print_text(text, x, y, font_input, font_size, color, screen):
+    font = pg.font.SysFont(font_input, font_size, True, False)
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
@@ -38,8 +36,6 @@ def shop():
 
     shop_bar_x, shop_bar_y = 200, 300
     step = (WIDTH - 50 * 8) // 9
-
-
 
     coin_n = open('./data/coin.txt', encoding='utf-8').read()
     print(coin_n)
@@ -74,10 +70,8 @@ def shop():
             screen.blit(list_of_scins[i], (shop_bar_x, 305))
             shop_bar_x += step + 50
 
-
-
         shop_bar_x = 130
-        print_text(str(coin_n), WIDTH - 50, 13, 40, (255, 255, 0), screen)
+        print_text(str(coin_n), WIDTH - 50, 13, "", 40 - 4 * len(str(coin_n)), (255, 255, 0), screen)
         pg.display.flip()
 
 # start_menu()

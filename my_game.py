@@ -509,7 +509,7 @@ while running:
     pg.draw.rect(screen, SECOND_BG_COLOR, (0, 0, WIDTH, 100))
     pg.draw.rect(screen, SECOND_BG_COLOR, (0, 650, WIDTH, 100))
     screen.blit(coin_bar, (WIDTH - 100, 0))
-    print_text(str(coin_n), WIDTH - 50, 13, "", 40 - 2 * len(str(coin_n)), (255, 255, 0), screen)
+    print_text(str(coin_n), WIDTH - 50, 13, "", 40 - 4 * len(str(coin_n)), (255, 255, 0), screen)
     # pg.draw.rect(screen, RED, (wall.rect.x, wall.rect.y, 20, 25), 1)
     clock.tick(FPS)
     pg.display.flip()
