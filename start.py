@@ -2,14 +2,22 @@ import pygame as pg
 import sys
 from shop import shop
 
+skin = pg.image.load('./data/bird.png')
+
 
 def print_text(text, x, y, font_input, font_size, color, screen):
     font = pg.font.SysFont(font_input, font_size, True, False)
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
+def __skin__():
+    global skin
+    print('              ', skin)
+    return skin
+
 
 def start_menu(play):
+    global skin
     pg.init()
     size = WIDTH, HEIGHT = 600, 750
 
@@ -39,7 +47,7 @@ def start_menu(play):
                     return True
                 elif (230 < mouse_pos[0] < 380) and (500 < mouse_pos[1] < 550):
                     print('shop')
-                    shop()
+                    skin = shop()
                 elif (230 < mouse_pos[0] < 380) and (600 < mouse_pos[1] < 650):
                     return
                 elif (0 < mouse_pos[0] < 50) and (700 < mouse_pos[1] < 750):

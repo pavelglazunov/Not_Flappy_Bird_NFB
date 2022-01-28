@@ -2,7 +2,7 @@ import random
 import sys
 
 import pygame as pg
-from start import start_menu
+from start import start_menu, __skin__
 
 
 class Coin(pg.sprite.Sprite):
@@ -95,12 +95,13 @@ class Wall(pg.sprite.Sprite):
 
 
 class Bird(pg.sprite.Sprite):
-    image = pg.image.load('./data/bird.png')
+    # image = pg.image.load('./data/bird.png')
 
     def __init__(self, *group):
+        global skin
         super().__init__(*group)
 
-        self.image = Bird.image
+        self.image = skin
         self.rect = self.image.get_rect()
         # print(self.rect)
 
@@ -339,6 +340,21 @@ def print_text(text, x, y, font_input, font_size, color, screen):
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
+def reset():
+    global count, BG_COLOR, coin_here, play
+    count = 0
+    print(111)
+    BG_COLOR = (230, 230, 230)
+    print('              ', __skin__())
+    wall_create('right')
+    coin_create()
+    bird.image = __skin__()
+
+    if bird.speed < 0:
+        bird.speed *= -1
+    coin_here = False
+    play = True
+
 
 pg.init()
 size = WIDTH, HEIGHT = 600, 750
@@ -361,6 +377,7 @@ RED = (255, 0, 0)
 WALL_GRAY = (96, 96, 96)
 tic = 0
 # random_count = 0
+skin = pg.image.load('./data/bird.png')
 
 all_sprites = pg.sprite.Group()
 wall_group = pg.sprite.Group()
@@ -385,6 +402,8 @@ list_of_right = []
 
 
 play = start_menu(False)
+reset()
+
 
 y = 100
 x = 0
@@ -440,20 +459,17 @@ while running:
         if event.type == pg.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
             if (230 < mouse_pos[0] < 380) and (400 < mouse_pos[1] < 450) and not play:
-                count = 0
-                BG_COLOR = (230, 230, 230)
-                wall_create('right')
-                coin_create()
-                bird.image = pg.image.load('./data/bird.png')
-                if bird.speed < 0:
-                    bird.speed *= -1
-                coin_here = False
-                play = True
+                reset()
             if (230 < mouse_pos[0] < 380) and (500 < mouse_pos[1] < 550) and not play:
-                count = 0
-                BG_COLOR = (230, 230, 230)
+                # count = 0
+                # BG_COLOR = (230, 230, 230)
 
                 play = start_menu(False)
+                reset()
+                # bird.image = __skin__()
+                #
+                # if bird.speed < 0:
+                #     bird.speed *= -1
 
     # keys = pg.key.get_pressed()
     # if keys[pg.K_SPACE]:
@@ -496,6 +512,10 @@ while running:
         coin_group.draw(screen)
     else:
         bird.rect.x, bird.rect.y = WIDTH // 2, HEIGHT // 2
+        if bird.speed > 0:
+            bird.image = skin
+        else:
+            bird.image = pg.transform.flip(skin, 50, 0)
         GRAVITY = 1
         screen.blit(game_over, (210, 100))
 
