@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from shop import shop
 
+
 def print_text(text, x, y, font_input, font_size, color, screen):
     font = pg.font.SysFont(font_input, font_size, True, False)
     surface = font.render(text, True, color)
@@ -9,7 +10,6 @@ def print_text(text, x, y, font_input, font_size, color, screen):
 
 
 def start_menu(play):
-
     pg.init()
     size = WIDTH, HEIGHT = 600, 750
 
@@ -24,13 +24,6 @@ def start_menu(play):
     exit_btn = pg.image.load('./data/exit.png')
     setting_btn = pg.image.load('./data/setting.png')
     coin_bar = pg.image.load('./data/coin_bar.png')
-
-
-
-
-
-
-
 
     coin_n = open('./data/coin.txt', encoding='utf-8').read()
     print(coin_n)
@@ -62,5 +55,5 @@ def start_menu(play):
         screen.blit(coin_bar, (WIDTH - 100, 0))
         print_text(str(coin_n), WIDTH - 50, 13, "", 40 - 4 * len(str(coin_n)), (255, 255, 0), screen)
         pg.display.flip()
-        
+
 # start_menu()
