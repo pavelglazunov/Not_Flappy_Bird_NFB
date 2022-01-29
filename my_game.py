@@ -194,9 +194,11 @@ def print_text(text, x, y, font_input, font_size, color, screen):
 
 
 def reset():
-    global count, BG_COLOR, coin_here, play
+    global count, count_r, BG_COLOR, coin_here, play
 
     count = 0
+    count_r = 0
+
     BG_COLOR = (230, 230, 230)
 
     wall_create('right')
@@ -251,7 +253,7 @@ reset()
 y = 100
 x = 0
 count = 0
-coin_n = int(open('./data/coin.txt', encoding='utf-8').read())
+
 tic = 0
 text_x = WIDTH // 2
 
@@ -263,6 +265,7 @@ home = pg.image.load('./data/home.png')
 coin_bar = pg.image.load('./data/coin_bar.png')
 
 while running:
+    coin_n = int(open('./data/coin.txt', encoding='utf-8').read())
     keys = pg.key.get_pressed()
     for event in pg.event.get():
         if event.type == pg.QUIT or keys[pg.K_ESCAPE]:
