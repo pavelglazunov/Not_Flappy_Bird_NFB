@@ -10,14 +10,15 @@ def print_text(text, x, y, font_input, font_size, color, screen):
     surface = font.render(text, True, color)
     screen.blit(surface, (x, y))
 
+
 def __skin__():
     global skin
-    print('              ', skin)
     return skin
 
 
 def start_menu(play):
     global skin
+
     pg.init()
     size = WIDTH, HEIGHT = 600, 750
 
@@ -26,6 +27,7 @@ def start_menu(play):
     start_menu_running = True
 
     BG = (255, 173, 173)
+
     logo = pg.image.load('./data/logo.png')
     start_btn = pg.image.load('./data/start_btn.png')
     shop_btn = pg.image.load('./data/shop_btn.png')
@@ -46,7 +48,6 @@ def start_menu(play):
                 if (230 < mouse_pos[0] < 380) and (400 < mouse_pos[1] < 450):
                     return True
                 elif (230 < mouse_pos[0] < 380) and (500 < mouse_pos[1] < 550):
-                    print('shop')
                     skin = shop()
                 elif (230 < mouse_pos[0] < 380) and (600 < mouse_pos[1] < 650):
                     return
@@ -61,6 +62,7 @@ def start_menu(play):
         screen.blit(setting_btn, (230, 600))
         screen.blit(exit_btn, (0, 700))
         screen.blit(coin_bar, (WIDTH - 100, 0))
+
         print_text(str(coin_n), WIDTH - 50, 13, "", 40 - 4 * len(str(coin_n)), (255, 255, 0), screen)
         pg.display.flip()
 
