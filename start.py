@@ -50,7 +50,7 @@ def start_menu(play):
                 elif (230 < mouse_pos[0] < 380) and (500 < mouse_pos[1] < 550):
                     skin = shop()
                 elif (230 < mouse_pos[0] < 380) and (600 < mouse_pos[1] < 650):
-                    return
+                    pass
                 elif (0 < mouse_pos[0] < 50) and (700 < mouse_pos[1] < 750):
                     pg.quit()
                     sys.exit()

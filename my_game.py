@@ -111,6 +111,7 @@ class Bird(pg.sprite.Sprite):
             if count % 10 == 0:
                 R, G, B = random.randint(100, 255), random.randint(100, 255), random.randint(100, 255)
                 BG_COLOR = (G, G, B)
+            self.image = pg.transform.flip(self.image, 50, 0)
 
     def jump(self, fall):
         global GRAVITY, press
